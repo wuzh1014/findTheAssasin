@@ -1,3 +1,9 @@
+let kcp = require('node-kcp');
+let dgram = require('dgram');
+let client = dgram.createSocket('udp4');
+let interval = 200;
+let kcpobj;
+
 cc.Class({
     extends: cc.Component,
     properties: {
@@ -37,36 +43,51 @@ cc.Class({
         });
     },
     loopSocket: function () {
-        this.socket = io('http://localhost:3000');
+        kcpobj = new kcp.KCP(123, {address: '127.0.0.1', port: 41234});
+        kcpobj.nodelay(0, interval, 0, 0);
+        kcpobj.output((data, size, context) => {
+            client.send(data, 0, size, context.port, context.address);
+        });
+        client.on('error', (err) => {
+            console.log(`client error:\n${err.stack}`);
+            client.close();
+        });
+        client.on('message', (msg, rinfo) => {
+            kcpobj.input(msg);
+        });
         let that = this;
-        this.socket.on(this.matchId, function(data){
-            let actionUser;
-            for (let i = 0; i < that.node.children.length; i++) {
-                if (that.node.children[i].user){
-                    if (that.node.children[i].user.userId === data.userId){
-                        actionUser = that.node.children[i];
+        setInterval(() => {
+            kcpobj.update(Date.now());
+            let recv = kcpobj.recv();
+            if (recv) {
+                let data = JSON.stringify(recv);
+                let actionUser;
+                for (let i = 0; i < that.node.children.length; i++) {
+                    if (that.node.children[i].user){
+                        if (that.node.children[i].user.userId === data.userId){
+                            actionUser = that.node.children[i];
+                        }
+                    }
+                }
+                if (!actionUser){
+                    if (data.userId !== that.userId){
+                        actionUser = cc.instantiate(that.manPref);
+                        actionUser.kcpobj = that.kcpobj;
+                        actionUser.user = data;
+                        that.node.addChild(actionUser);
+                        actionUser.setPosition(that.getNewManPosition());
+                    }
+                }
+                if (actionUser){
+                    if (data.userId !== that.userId){
+                        actionUser.getComponent('Man').walkFlag = data.walkFlag;
+                        actionUser.getComponent('Man').doWalkAction();
+                        actionUser.getComponent('Man').node.x = data.position[0];
+                        actionUser.getComponent('Man').node.y = data.position[1];
                     }
                 }
             }
-            if (!actionUser){
-                if (data.userId !== that.userId){
-                    actionUser = cc.instantiate(that.manPref);
-                    actionUser.socket = that.socket;
-                    actionUser.user = data;
-                    that.node.addChild(actionUser);
-                    actionUser.setPosition(that.getNewManPosition());
-                }
-            }
-
-            if (actionUser){
-                if (data.userId !== that.userId){
-                    actionUser.getComponent('Man').walkFlag = data.walkFlag;
-                    actionUser.getComponent('Man').doWalkAction();
-                    actionUser.getComponent('Man').node.x = data.position[0];
-                    actionUser.getComponent('Man').node.y = data.position[1];
-                }
-            }
-        });
+        }, interval);
     },
     init: function () {
         let newMan;

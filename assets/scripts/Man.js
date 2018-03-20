@@ -40,28 +40,6 @@ cc.Class({
         }
     },
     onLoad: function () {
-        // this.randWalk();
-    },
-    randWalk: function (){
-        // let randSec = 1 + cc.random0To1() * this.maxRandWalkSec;
-        // let moveFlag = cc.randomMinus1To1() > 0 ? 1 : 0;
-        // ArrayUtil.setZero(this.walkFlag);
-        // if (cc.random0To1() < 0.2){
-        //     randSec = 1.5;
-        // }else{
-        //     if (cc.randomMinus1To1() > 0){
-        //         this.walkFlag[2] = moveFlag;
-        //         this.walkFlag[3] = this.walkFlag[2] ? 0 : 1;
-        //     }else{
-        //         this.walkFlag[0] = moveFlag;
-        //         this.walkFlag[1] = this.walkFlag[0] ? 0 : 1;
-        //     }
-        // }
-        // this.doWalkAction();
-        // let that = this;
-        // this.scheduleOnce(function() {
-        //     that.randWalk();
-        // }, randSec);
     },
     doWalkAction: function () {
         let thisAction = ArrayUtil.getIndex(this.walkFlag);

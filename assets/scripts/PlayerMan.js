@@ -21,12 +21,15 @@ cc.Class({
         this.walkFlag[this.includeKeys.indexOf(event.keyCode)] = 1;
         this.doWalkAction();
 
-        this.node.socket.emit('move', {
+        this.doEmit();
+    },
+    doEmit: function (event) {
+        this.kcpobj.send(JSON.stringify({
             matchId: this.node.matchId,
             userId: this.node.user.userId,
             position: [this.node.x, this.node.y],
             walkFlag: this.walkFlag,
-        });
+        }));
     },
     onKeyUp: function (event) {
         if (this.includeKeys.indexOf(event.keyCode) === -1){
@@ -34,12 +37,6 @@ cc.Class({
         }
         this.walkFlag[this.includeKeys.indexOf(event.keyCode)] = 0;
         this.doWalkAction();
-
-        this.node.socket.emit('move', {
-            matchId: this.node.matchId,
-            userId: this.node.user.userId,
-            position: [this.node.x, this.node.y],
-            walkFlag: this.walkFlag,
-        });
+        this.doEmit();
     }
 });
