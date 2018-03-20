@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "walkLeft",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.03,
+  "sample": 60,
+  "speed": 0.08,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "a76f7dcd-2539-4234-89c9-f5a72dd5a80a"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "a9ba9887-d50e-4c1d-b1e9-b8284f916328"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
