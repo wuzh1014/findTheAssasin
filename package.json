@@ -1,0 +1,23 @@
+{
+  "name": "findtheassasin",
+  "version": "1.0.0",
+  "description": "「21点游戏」是 Cocos Creator 的 Demo 项目之一。由腾讯游戏和触控科技联合开发，用于教学和展示 Cocos Creator 快速开发游戏界面和玩法的目的。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuzh1014/findTheAssasin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wuzh1014/findTheAssasin/issues"
+  },
+  "homepage": "https://github.com/wuzh1014/findTheAssasin#readme",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "node-kcp": "^1.0.8"
+  }
+}
