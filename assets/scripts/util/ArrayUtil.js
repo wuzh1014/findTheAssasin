@@ -17,4 +17,12 @@ let ArrayUtil = {
             array[i] = 0;
         }
     },
+    hasOne: function (array) {
+        for (let i = 0; i < array.length; i++){
+            if (array[i]){
+                return true;
+            }
+        }
+        return false;
+    },
 };
