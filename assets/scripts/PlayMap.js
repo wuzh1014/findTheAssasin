@@ -1,3 +1,7 @@
+'use strict';
+
+var serverUrl = 'http://47.88.54.29:3000';
+// let serverUrl = 'http://localhost:3000';
 cc.Class({
     extends: cc.Component,
     properties: {
@@ -13,36 +17,37 @@ cc.Class({
             default: 10
         }
     },
-    onLoad: function () {
-        let manager = cc.director.getCollisionManager();
-		manager.enabled = true;
-		// manager.enabledDebugDraw = true;
-		// manager.enabledDrawBoundingBox = true;
+    onLoad: function onLoad() {
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        // manager.enabledDebugDraw = true;
+        // manager.enabledDrawBoundingBox = true;
+
 
         this.matchType = 1;
         this.timeFix = 0;
         this.matchId = '';
         this.userId = '';
 
-        let userData = cc.find('userData');
-        if (userData){
+        var userData = cc.find('userData');
+        if (userData) {
             this.matchType = userData.matchType;
         }
         this.userId = '' + new Date().getTime();
-        let that = this;
+        var that = this;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/game/getInMatch",
+            url: serverUrl + "/game/getInMatch",
             data: {
                 userId: this.userId,
                 matchType: this.matchType
             },
-            success: function(data){
+            success: function success(data) {
                 that.matchId = data.matchId;
                 that.type = data.type;
-                if (data.type === 'start'){
+                if (data.type === 'start') {
                     that.users = data.users;
-                }else {
+                } else {
                     cc.find("AlertMsg/msg").getComponent('cc.Label').string = '请等待游戏开始';
                 }
                 that.asyncTime();
@@ -50,44 +55,44 @@ cc.Class({
             }
         });
     },
-    asyncTime: function () {
-        let that = this;
+    asyncTime: function asyncTime() {
+        var that = this;
         setInterval(function () {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:3000/game/asyncTime",
+                url: serverUrl + "/game/asyncTime",
                 data: {
                     userId: that.userId,
                     matchId: that.matchId
                 },
-                success: function(data){
+                success: function success(data) {
                     that.timeFix = new Date().getTime() - data.timeStamp;
                 }
             });
         }, 5000);
     },
-    judgeUser: function (judgeId) {
-        let that = this;
+    judgeUser: function judgeUser(judgeId) {
+        var that = this;
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/game/judgeUser",
+            url: serverUrl + "/game/judgeUser",
             data: {
                 userId: this.userId,
                 matchId: this.matchId,
-                judgeId: judgeId,
+                judgeId: judgeId
             },
-            success: function(data){
-                let result = data.result;
-                let alertMsg = cc.find("AlertMsg/msg").getComponent('cc.Label');
+            success: function success(data) {
+                var result = data.result;
+                var alertMsg = cc.find("AlertMsg/msg").getComponent('cc.Label');
                 if (result === 'wrong') {
                     alertMsg.string = '对方不是刺客!';
                     setTimeout(function () {
                         alertMsg.string = '';
                     }, 1500);
-                }else {
-                    for (let i = 0; i < that.node.children.length; i++) {
-                        if (that.node.children[i].user){
-                            if (that.node.children[i].user.userId === judgeId){
+                } else {
+                    for (var i = 0; i < that.node.children.length; i++) {
+                        if (that.node.children[i].user) {
+                            if (that.node.children[i].user.userId === judgeId) {
                                 that.node.children[i].destroy();
                                 break;
                             }
@@ -99,7 +104,7 @@ cc.Class({
                             alertMsg.string = '';
                         }, 1500);
                     }
-                    if (result === 'win'){
+                    if (result === 'win') {
                         alertMsg.string = '你已胜利';
                         setTimeout(function () {
                             alertMsg.string = '';
@@ -110,52 +115,50 @@ cc.Class({
             }
         });
     },
-    killUser: function (killId) {
+    killUser: function killUser(killId) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/game/killUser",
+            url: serverUrl + "/game/killUser",
             data: {
                 userId: this.userId,
                 matchId: this.matchId,
-                killId: killId,
+                killId: killId
             },
-            success: function(data){
-                let result = data.result;
-                if (result){
-                    for (let i = 0; i < that.node.children.length; i++) {
-                        if (that.node.children[i].user){
-                            if (that.node.children[i].user.userId === dataUser.userId){
+            success: function success(data) {
+                var result = data.result;
+                if (result) {
+                    for (var i = 0; i < that.node.children.length; i++) {
+                        if (that.node.children[i].user) {
+                            if (that.node.children[i].user.userId === dataUser.userId) {
                                 actionUser = that.node.children[i];
                             }
                         }
                     }
                     // alert
-                }else{
-
-                }
+                } else {}
             }
         });
     },
-    initSocket: function () {
-        this.socket = io('http://localhost:3000');
-        let that = this;
-        this.socket.on(this.matchId, function(data){
-            if (that.type !== 'start'){
+    initSocket: function initSocket() {
+        this.socket = io(serverUrl);
+        var that = this;
+        this.socket.on(this.matchId, function (data) {
+            if (that.type !== 'start') {
                 cc.find("AlertMsg/msg").getComponent('cc.Label').string = '';
-                that.type = 'start'
+                that.type = 'start';
             }
-            let type = data.type;
-            if (type === 'end'){
-                let dataUser;
-                for (let k = 0; k < data.users.length; k++) {
+            var type = data.type;
+            if (type === 'end') {
+                var _dataUser = void 0;
+                for (var k = 0; k < data.users.length; k++) {
                     if (data.users[k].userId === that.userId) {
-                        dataUser = data.users[k];
+                        _dataUser = data.users[k];
                         break;
                     }
                 }
-                if (!dataUser){
+                if (!_dataUser) {
                     cc.find("AlertMsg/msg").getComponent('cc.Label').string = '你已被识破';
-                }else {
+                } else {
                     cc.find("AlertMsg/msg").getComponent('cc.Label').string = '你已胜利';
                 }
                 setTimeout(function () {
@@ -164,11 +167,11 @@ cc.Class({
                 return;
             }
 
-            if (type === 'kill'){
-                for (let k = 0; k < data.users.length; k++) {
-                    for (let i = 0; i < that.node.children.length; i++) {
-                        if (that.node.children[i].user){
-                            if (that.node.children[i].user.userId === data.users[k].userId){
+            if (type === 'kill') {
+                for (var _k = 0; _k < data.users.length; _k++) {
+                    for (var i = 0; i < that.node.children.length; i++) {
+                        if (that.node.children[i].user) {
+                            if (that.node.children[i].user.userId === data.users[_k].userId) {
                                 that.node.children[i].destroy();
                                 break;
                             }
@@ -178,52 +181,52 @@ cc.Class({
                 return;
             }
 
-            let timeStamp = data.timeStamp;
-            for (let k = 0; k < data.users.length; k++) {
-                let dataUser = data.users[k];
+            var timeStamp = data.timeStamp;
+            for (var _k2 = 0; _k2 < data.users.length; _k2++) {
+                var _dataUser2 = data.users[_k2];
 
-                let actionUser;
-                for (let i = 0; i < that.node.children.length; i++) {
-                    if (that.node.children[i].user){
-                        if (that.node.children[i].user.userId === dataUser.userId){
-                            actionUser = that.node.children[i];
+                var _actionUser = void 0;
+                for (var _i = 0; _i < that.node.children.length; _i++) {
+                    if (that.node.children[_i].user) {
+                        if (that.node.children[_i].user.userId === _dataUser2.userId) {
+                            _actionUser = that.node.children[_i];
                         }
                     }
                 }
-                if (actionUser){
-                    if (dataUser.userId === that.userId) {
+                if (_actionUser) {
+                    if (_dataUser2.userId === that.userId) {
                         return;
                     }
 
-                    actionUser.getComponent('Man').pushWalk(dataUser.position);
-                }else {
-                    if (dataUser.userId === that.userId){
-                        actionUser = cc.instantiate(that.playerPref);
-                        actionUser.socket = that.socket;
-                        actionUser.stackRunner = false;
-                        actionUser.matchId = that.matchId;
-                        actionUser.user = dataUser;
-                        that.node.addChild(actionUser);
+                    _actionUser.getComponent('Man').pushWalk(_dataUser2.position);
+                } else {
+                    if (_dataUser2.userId === that.userId) {
+                        _actionUser = cc.instantiate(that.playerPref);
+                        _actionUser.socket = that.socket;
+                        _actionUser.stackRunner = false;
+                        _actionUser.matchId = that.matchId;
+                        _actionUser.user = _dataUser2;
+                        that.node.addChild(_actionUser);
                         // actionUser.setPosition(this.getNewManPosition());
-                        actionUser.setPosition(dataUser.position[0], dataUser.position[1]);
-                    }else {
-                        actionUser = cc.instantiate(that.manPref);
-                        actionUser.socket = that.socket;
-                        actionUser.stackRunner = true;
-                        actionUser.matchId = that.matchId;
-                        actionUser.user = dataUser;
-                        that.node.addChild(actionUser);
-                        actionUser.setPosition(dataUser.position[0], dataUser.position[1]);
+                        _actionUser.setPosition(_dataUser2.position[0], _dataUser2.position[1]);
+                    } else {
+                        _actionUser = cc.instantiate(that.manPref);
+                        _actionUser.socket = that.socket;
+                        _actionUser.stackRunner = true;
+                        _actionUser.matchId = that.matchId;
+                        _actionUser.user = _dataUser2;
+                        that.node.addChild(_actionUser);
+                        _actionUser.setPosition(_dataUser2.position[0], _dataUser2.position[1]);
                     }
                 }
             }
         });
     },
-    getNewManPosition: function () {
-        let maxX = this.node.width / 2 - 20;
-        let randX = cc.randomMinus1To1() * maxX;
-        let maxY = this.node.height / 2 - 20;
-        let randY = cc.randomMinus1To1() * maxY;
+    getNewManPosition: function getNewManPosition() {
+        var maxX = this.node.width / 2 - 20;
+        var randX = cc.randomMinus1To1() * maxX;
+        var maxY = this.node.height / 2 - 20;
+        var randY = cc.randomMinus1To1() * maxY;
         return cc.p(randX, randY);
     }
 });

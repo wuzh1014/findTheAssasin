@@ -1,24 +1,33 @@
 {
+  "appKey": "",
+  "appSecret": "",
+  "encryptJs": true,
   "excludeScenes": [],
+  "includeAnySDK": false,
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "jailbreakPlatform": false,
+  "md5Cache": false,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
     "portrait": false,
     "upsideDown": false
   },
-  "packageName": "org.cocos2d.tutorial-blackjack",
-  "startScene": "8a546935-70d4-42d2-a051-8d0e76f28008",
-  "title": "tutorial-blackjack",
-  "webOrientation": "auto",
-  "includeSdk": [
-    "anysdk"
-  ],
-  "includeAnySDK": false,
-  "oauthLoginServer": "",
-  "appKey": "",
-  "appSecret": "",
+  "packageName": "org.cocos2d.fta",
   "privateKey": "",
   "renderMode": "0",
-  "inlineSpriteFrames": true,
-  "mergeStartScene": false
+  "startScene": "8a546935-70d4-42d2-a051-8d0e76f28008",
+  "title": "FTA",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "appid": "",
+    "orientation": "portrait"
+  },
+  "xxteaKey": "0539e286-8c63-46",
+  "zipCompressJs": true
 }
