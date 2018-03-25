@@ -16,8 +16,8 @@ cc.Class({
     onLoad: function () {
         let manager = cc.director.getCollisionManager();
 		manager.enabled = true;
-		manager.enabledDebugDraw = true;
-		manager.enabledDrawBoundingBox = true;
+		// manager.enabledDebugDraw = true;
+		// manager.enabledDrawBoundingBox = true;
 
         this.matchType = 1;
         this.timeFix = 0;

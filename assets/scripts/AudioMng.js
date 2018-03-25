@@ -21,7 +21,6 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
-
         chipsAudio: {
             default: null,
             url: cc.AudioClip

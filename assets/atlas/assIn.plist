@@ -4,37 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>1.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{31,33}</string>
-                <key>spriteSourceSize</key>
-                <string>{31,33}</string>
-                <key>textureRect</key>
-                <string>{{0,0},{31,33}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>10.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{30,31}</string>
-                <key>spriteSourceSize</key>
-                <string>{30,31}</string>
-                <key>textureRect</key>
-                <string>{{32,65},{30,31}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>11.png</key>
+            <key>walk_01.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -45,142 +15,172 @@
                 <key>spriteSourceSize</key>
                 <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{62,65},{27,32}}</string>
+                <string>{{0,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>12.png</key>
+            <key>walk_03.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{30,31}</string>
+                <string>{25,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{30,31}</string>
+                <string>{25,32}</string>
                 <key>textureRect</key>
-                <string>{{89,65},{30,31}}</string>
+                <string>{{27,0},{25,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>2.png</key>
+            <key>walk_05.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{30,33}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{30,33}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{31,0},{30,33}}</string>
+                <string>{{52,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>3.png</key>
+            <key>walk_06.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{29,33}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{29,33}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{61,0},{29,33}}</string>
+                <string>{{79,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>4.png</key>
+            <key>walk_07.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{30,32}</string>
+                <string>{25,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{30,32}</string>
+                <string>{25,32}</string>
                 <key>textureRect</key>
-                <string>{{90,0},{30,32}}</string>
+                <string>{{106,0},{25,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>5.png</key>
+            <key>walk_08.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{28,31}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{28,31}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{0,33},{28,31}}</string>
+                <string>{{131,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>6.png</key>
+            <key>walk_09.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{29,32}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{29,32}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{28,33},{29,32}}</string>
+                <string>{{158,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>7.png</key>
+            <key>walk_10.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{28,31}</string>
+                <string>{25,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{28,31}</string>
+                <string>{25,32}</string>
                 <key>textureRect</key>
-                <string>{{57,33},{28,31}}</string>
+                <string>{{185,0},{25,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>8.png</key>
+            <key>walk_11.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{29,32}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{29,32}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{85,33},{29,32}}</string>
+                <string>{{210,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>9.png</key>
+            <key>walk_12.gif</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{32,32}</string>
+                <string>{27,32}</string>
                 <key>spriteSourceSize</key>
-                <string>{32,32}</string>
+                <string>{27,32}</string>
                 <key>textureRect</key>
-                <string>{{0,65},{32,32}}</string>
+                <string>{{237,0},{27,32}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>walk_13.gif</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{25,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{25,32}</string>
+                <key>textureRect</key>
+                <string>{{264,0},{25,32}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>walk_14.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{27,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{27,32}</string>
+                <key>textureRect</key>
+                <string>{{289,0},{27,32}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -194,13 +194,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>einWalker.png</string>
+            <string>assIn.png</string>
             <key>size</key>
-            <string>{120,97}</string>
+            <string>{316,32}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0a140d29d6b341b0307fe384768200dd:df879aa8ee4293d2e8b34ecd3cc4fa96:dd1fca1ddea2f2de7ff4cde53135186b$</string>
+            <string>$TexturePacker:SmartUpdate:f742cf8bbb91a3375ab4e753f289f15c:a65102d320446abffa379c787f7929f0:a12b74893c2efa1ac4331083b23cdec6$</string>
             <key>textureFileName</key>
-            <string>einWalker.png</string>
+            <string>assIn.png</string>
         </dict>
     </dict>
 </plist>

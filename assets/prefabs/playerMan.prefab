@@ -135,7 +135,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_useOriginalSize": true,
+    "_useOriginalSize": false,
     "_actualFontSize": 100,
     "_fontSize": 100,
     "_lineHeight": 100,
@@ -169,7 +169,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "60dbb4d2-c396-4cd9-8325-46318102d961"
+      "__uuid__": "65b429c6-76af-4a4c-a7ff-c20d7c9c8790"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -185,7 +185,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "b4931c10-8c8c-463b-8636-c58b25b9d856"
+      "__uuid__": "79103b3c-dc12-4160-966d-6e939ec6499b"
     }
   },
   {
@@ -239,7 +239,7 @@
     "operator": [],
     "maxRandWalkSec": 5,
     "walkAtlas": {
-      "__uuid__": "b4931c10-8c8c-463b-8636-c58b25b9d856"
+      "__uuid__": "79103b3c-dc12-4160-966d-6e939ec6499b"
     },
     "user": null,
     "includeKeys": []

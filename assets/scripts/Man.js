@@ -31,10 +31,10 @@ cc.Class({
         faceName: {
             get: function () {
                 return [
-                    '11',
-                    '2',
-                    '5',
-                    '8'
+                    'walk_13',
+                    'walk_03',
+                    'walk_07',
+                    'walk_10',
                 ];
             }
         }
@@ -52,7 +52,6 @@ cc.Class({
         }
     },
     loadTouch: function () {
-
         let self = this;
         let judgeBtn = self.node.getChildByName('judgeBtn');
         let killBtn = self.node.getChildByName('killBtn');
